@@ -4,11 +4,13 @@ $ cat ~/bin/git
 
 ```sh
 #!/bin/sh
+
 docker run \
-  -v $HOME/:$HOME/ \
   --user joe \
+  -v $HOME/:$HOME/ \
+  --workdir=$PWD \
   -it --rm \
-  inspir3/git $@
+  inspir3/arm/git /usr/bin/git "$@"
 ```
 
 ```console
@@ -19,10 +21,14 @@ $ git --version
 # Authentification
 Create an user with same name/uid than your Linux user
 ```console
-$ docker exec -it git adduser -D -G users -u 1001 -s /bin/sh joe
+$ docker run \
+  -it \
+  --name git \
+  inspir3/arm/git \
+  adduser -D -G users -u 1001 -s /bin/sh joe
 ```
 
 Update your image to save your configuration
 ```console
-$ docker commit git inspir3/git
+$ docker commit git inspir3/arm/git
 ```
