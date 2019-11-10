@@ -1,2 +1,0 @@
-# dockerhub
-Source Dockerfile
