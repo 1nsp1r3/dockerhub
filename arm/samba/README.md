@@ -23,8 +23,8 @@ $ docker run \
 # Authentification
 Create an user with same name/uid than your Window user
 ```console
-$ docker exec -it samba adduser -D -G users -u 1001 -s /bin/sh joe
-$ docker exec -it samba smbpasswd -a joe
+$ docker exec -it samba adduser -D -G users -u $UID -s /bin/sh $USER
+$ docker exec -it samba smbpasswd -a $USER
 ```
 
 Update your image to save your configuration
