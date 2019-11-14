@@ -5,3 +5,5 @@ RUN apk update && \
   apk add openssh-client
 
 CMD ["/usr/bin/git"]
+
+# docker build -t inspir3/arm-git ./

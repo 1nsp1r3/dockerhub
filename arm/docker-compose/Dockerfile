@@ -14,3 +14,5 @@ RUN apk update && \
   pip install docker-compose
 
 ENTRYPOINT ["/usr/bin/docker-compose"]
+
+# docker build -t inspir3/arm-docker-compose ./

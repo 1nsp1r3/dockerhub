@@ -6,3 +6,5 @@ RUN apk update && \
 EXPOSE 445/tcp
 
 ENTRYPOINT ["/usr/sbin/smbd", "-FS", "--no-process-group"]
+
+# docker build -t inspir3/arm-samba ./
