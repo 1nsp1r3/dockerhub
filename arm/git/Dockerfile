@@ -7,3 +7,4 @@ RUN apk update && \
 CMD ["/usr/bin/git"]
 
 # docker build -t inspir3/arm-git ./
+# docker login && docker push inspir3/arm-git

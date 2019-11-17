@@ -16,3 +16,4 @@ RUN apk update && \
 ENTRYPOINT ["/usr/bin/docker-compose"]
 
 # docker build -t inspir3/arm-docker-compose ./
+# docker login && docker push inspir3/arm-docker-compose
