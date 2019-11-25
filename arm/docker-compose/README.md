@@ -7,6 +7,7 @@ docker run \
   --volume /var/run/docker.sock:/var/run/docker.sock \
   --volume \$PWD/:\$PWD/ \
   --workdir \$PWD/ \
+  --env COMPOSE_IGNORE_ORPHANS=true \
   -ti --rm \
   inspir3/arm-docker-compose "\$@"
 EOF
