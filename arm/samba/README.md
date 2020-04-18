@@ -1,6 +1,9 @@
 # Configuration
 ```console
 # mkdir -p /var/docker/samba/
+```
+
+```console
 # cat > /var/docker/samba/smb.conf << EOF
 [private]
 path = /home/private/
@@ -8,21 +11,13 @@ writable = yes
 EOF
 ```
 
-# Run
-```console
-$ docker run \
-  --detach \
-  --volume /var/docker/samba/smb.conf:/etc/samba/smb.conf \
-  --volume /home/private/:/home/private/ \
-  --publish 445:445 \
-  --name samba \
-  inspir3/arm-samba
-```
-
 # Authentification
 Create an user with same name/uid than your Window user
 ```console
 $ docker exec -it samba adduser -D -G users -u $UID -s /bin/sh $USER
+```
+
+```console
 $ docker exec -i samba smbpasswd -a $USER << EOF
 secret
 secret
@@ -34,7 +29,18 @@ Update your image to save your configuration
 $ docker commit samba inspir3/arm-samba
 ```
 
-# With docker-compose
+# Run
+```console
+$ docker run                                              \
+  --detach                                                \
+  --volume /var/docker/samba/smb.conf:/etc/samba/smb.conf \
+  --volume /home/private/:/home/private/                  \
+  --publish 445:445                                       \
+  --name samba                                            \
+  inspir3/arm-samba
+```
+
+# Run with docker-compose
 ```console
 $ cat > ~/compose-samba.yml << EOF
 version: '3.7'
@@ -53,11 +59,7 @@ EOF
 ```
 
 ```console
-$ cat >> ~/.profile << EOF
-alias smb='docker-compose -f ~/compose-samba.yml'
-EOF
-$ . ~/.profile
-$ smb up -d
+$ docker-compose -f ~/compose-samba.yml up -d
 ```
 
 # Info
