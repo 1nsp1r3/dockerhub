@@ -1,5 +1,5 @@
 # Configuration
-```console
+```
 # mkdir -p /var/docker/elk/etc/filebeat/ && \
   mkdir -p /var/docker/elk/filebeat/     && \
   mkdir -p /var/docker/elk/log
