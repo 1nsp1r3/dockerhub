@@ -1,11 +1,11 @@
 # Configuration
-```console
+```
 # mkdir -p /var/docker/elk/etc/filebeat/ && \
   mkdir -p /var/docker/elk/filebeat/     && \
   mkdir -p /var/docker/elk/log
 ```
 
-```console
+```
 # cat > /var/docker/elk/etc/filebeat/filebeat.yml << EOF
 filebeat.inputs:
 - type: log
@@ -19,12 +19,12 @@ output.logstash:
 EOF
 ```
 
-```console
+```
 # echo "51.38.49.219    elk2" >> /etc/hosts
 ```
 
 # Run
-```console
+```
 $ docker run                                                                             \
   --detach                                                                               \
   --volume /var/docker/elk/etc/filebeat/:/etc/filebeat/                                  \
@@ -37,7 +37,7 @@ $ docker run                                                                    
 ```
 
 # Run with docker-compose
-```console
+```
 $ cat > compose-filebeat.yml << EOF
 version: '3.7'
 services:
@@ -54,12 +54,12 @@ services:
 EOF
 ```
 
-```console
+```
 $ docker-compose -f compose-filebeat.yml up -d
 ```
 
 # Info
-```console
+```
 alpine:latest (3.74 Mb)
  |
  |__ inspir3/arm-filebeat:latest (139 Mb)
